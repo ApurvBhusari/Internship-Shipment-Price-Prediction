@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<style>
+body {
+  background-image: url('https://www.morethanshipping.com/wp-content/uploads/2021/03/difference-between-gri-and-premium-rates-shipping.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+label {
+  font-weight: bold;
+  
+}
+
+</style>
+
+<style>
+body {
+  background-color: rgb(157, 184, 194);
+}
+h1 {text-align: center;}
+p {text-align: center;}
+div {text-align: center;}
+
+</style>
+  
+</head>
+
+<body>
+
+ <div class="login">
+	<h1>Shipment Price Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    
+    <label>Unit of Measure (Per pack)</label><br>
+      <input type="text" name="unit_of_measure_(per_pack)" placeholder="Enter bw 0-200" required="required" /><br><br>
+      
+      <label>Line Item quantity</label><br>
+    	<input type="text" name="line_item_quantity " placeholder="Enter bw 0-45000 " required="required" /><br><br>
+      
+      <label>Pack Price</label><br>
+        <input type="text" name="pack_price" placeholder="Enter bw 0-50" required="required" /><br><br>
+        
+        <label>Unit price</label><br>
+        <input type="text" name="unit_price" placeholder="Decimal value bw 0-1.5" required="required" /><br><br>
+        
+        
+        <label>Freight Cost (usd)</label><br>
+        <input type="text" name="freight_cost_(usd)" placeholder="Enter bw 0-17500" required="required" /><br><br>
+        
+        <label>Line Item Insurance (usd)</label><br>
+        <input type="text" name="line_item_insurance_(usd)" placeholder="Enter bw 0-550" required="required" /><br><br>
+        
+        <!-- Delivery_status -->
+        <label for="Delivery_status">Delivery Status:</label>
+        <select name="Delivery_status" id="Delivery_status" required="required">
+            <option value="1">On Time</option>
+            <option value="0">Delayed</option>
+        </select><br><br>
+        
+        
+        <!-- First Line Designation -->
+        <label for="first_line_designation">First Line Designation:</label>
+        <select name="first_line_designation" id="first_line_designation" required="required">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select><br><br>
+        
+        <!-- Shipment Mode -->
+        <label for="shipment_mode">Shipment Mode:</label>
+        <select name="shipment_mode" id="shipment_mode" required="required">
+            <option value="1">Air</option>
+            <option value="1">Truck</option>
+            <option value="1">Air Charter</option>
+            <option value="1">Ocean</option>
+        </select><br><br>
+        <!-- Manufacturing Site -->
+        <label for="manufacturing_site">Manufacturing Site:</label>
+        <select name="manufacturing_site" id="manufacturing_site" required="required">
+            <option value="1">other </option>
+            <option value="1">Aurobindo Unit III, India</option>
+            <option value="1">Mylan (formerly Matrix) Nashik</option>
+            <option value="1">Hetero Unit III Hyderabad IN</option>
+            <option value="1">Cipla, Goa, India</option>
+            <option value="1">Strides, Bangalore, India.</option>
+        </select><br><br>
+        
+
+       
+
+       
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+  
+   
+ </div>
+ <center> {{prediction_text}} </center>
+
+</body>
+</html>
